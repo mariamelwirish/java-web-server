@@ -10,6 +10,7 @@ public class HttpRequest implements Runnable {
         this.socket = socket;
     }
 
+    // run function for Runnable (for threads).
     public void run() {
         try {
             processRequest();
@@ -18,6 +19,7 @@ public class HttpRequest implements Runnable {
         }
     }
 
+    // function to process all upcoming HTTP requests.
     private void processRequest() throws Exception {
         // Input Stream from client.
         InputStream is = socket.getInputStream();
@@ -28,15 +30,16 @@ public class HttpRequest implements Runnable {
         OutputStream os = socket.getOutputStream();
         DataOutputStream dos = new DataOutputStream(os);
 
-        // Read HTTP Request.
+        // Read HTTP Request (synchronized to avoid the mixed output).
         synchronized(System.out) {
             System.out.println("New connection received from client: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
             System.out.println("----------------- HTTP Request -----------------");
 
+            // read the HTTP request line.
             String requestLine = br.readLine();
-
             System.out.println(requestLine);
 
+            // read the remaining HTTP header lines.
             String headerLine = null;
             while((headerLine = br.readLine()).length() != 0) {
                 System.out.println(headerLine);
