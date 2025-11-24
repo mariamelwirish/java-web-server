@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMPS 242 Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef1f7;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            color: #4A76FD;
+            margin-bottom: 10px;
+        }
+        .box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 65%;
+            margin: auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 28px;
+        }
+        .test-link {
+            display: block;
+            margin: 12px 0;
+            font-size: 19px;
+            text-decoration: none;
+            color: #4A76FD;
+            font-weight: bold;
+        }
+        .note {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 25px;
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+        strong {
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Welcome to Our CMPS 242 Web Server!</h1>
+    <p>
+        Created by <strong>Mariam Elwirish</strong> and <strong>Elie Jbara</strong>.
+    </p>
+
+    <p style="font-size: 17px; max-width: 80%; margin: 20px auto;">
+        This landing page is served directly by our custom Java HTTP server.
+        Below are three test cases that demonstrate how our server handles
+        different types of GET requests.
+    </p>
+
+    <h2>Test Files</h2>
+
+    <!-- Test 1 -->
+    <a href="test1.txt" class="test-link">Click to download test1.txt</a>
+    <p class="note">
+        We intentionally left <code>test1.txt</code> without a MIME mapping.
+        The server falls back to <code>application/octet-stream</code>, causing the browser
+        to download it instead of displaying it. This demonstrates the default behavior.
+    </p>
+
+    <!-- Test 2 -->
+    <a href="test2.html" class="test-link">Click to open test2.html</a>
+    <p class="note">
+        <code>test2.html</code> loads normally because the server recognizes
+        <code>.html</code> files and serves them using the <code>text/html</code> MIME type.
+    </p>
+
+    <!-- Test 3 -->
+    <a href="missingFile.xyz" class="test-link">Click to request a missing file</a>
+    <p class="note">
+        This file does not exist. The server correctly returns a
+        <code>404 Not Found</code> response and displays our custom error page.
+    </p>
+</div>
+</body>
+</html>

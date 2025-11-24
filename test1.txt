@@ -1,0 +1,3 @@
+This is Test File 1.
+Served by the CMPS 242 Java Web Server.
+Used for testing static file handling.
