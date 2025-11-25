@@ -6,7 +6,7 @@ public class WebServer {
         int port = 6789;
 
         // Welcome Messages for Web Server.
-        System.out.println("Welcome to CMPS 242 Web Server! :D");
+        System.out.println("Welcome to CMPS 242 Web Server! :D. Prepared by Mariam Elwirish & Elie Jbara.");
         System.out.println("Web Server Starting...");
 
         // Binding a listening socket ti the port.

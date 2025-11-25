@@ -61,7 +61,8 @@ public class HttpRequest implements Runnable {
             try {
                 fis = new FileInputStream(fileName);
             } catch (FileNotFoundException e) {
-                fis = new FileInputStream("./error404.html");
+                fileName = "./error404.html";
+                fis = new FileInputStream(fileName);
                 fileExists = false;
             }
 
@@ -75,6 +76,14 @@ public class HttpRequest implements Runnable {
                 statusLine = "HTTP/1.0 404 Not Found" + CRLF;
                 contentTypeLine = "Content-type: text/html" + CRLF;
             }
+
+            System.out.println("\n----------------- HTTP Response -----------------");
+            System.out.print(statusLine);
+            System.out.println(contentTypeLine);
+            System.out.println("Sending HTTP response with file : " + fileName);
+
+
+            // System.out.print(fileName);
 
             // Construct response (status line, header line(s), CRLF, body).
             os.write(statusLine.getBytes());
@@ -95,6 +104,7 @@ public class HttpRequest implements Runnable {
         } catch (Exception e) {
             System.out.println("Error closing resources: " + e);
         }
+        System.out.println("***********************************************************************");
     }
 
     private static String contentType(String fileName) {
